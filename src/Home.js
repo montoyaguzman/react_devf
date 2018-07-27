@@ -21,6 +21,8 @@ class Home extends Component {
         });
       })
       .catch(err => console.log("Error.."));
+
+    this.advertencia();
   }
 
   componentWillMount() {
@@ -35,11 +37,26 @@ class Home extends Component {
     }
   }
 
+  advertencia() {
+    console.log("Soy una WARN...");
+  }
+
+  prueba() {
+    axios
+      .get("http://localhost:3000/permisos?userID=cpbast93")
+      .then(response => {
+        response.data;
+        console.log(response.data);
+      })
+      .catch(err => console.log("Error.."));
+  }
+
   render() {
     // Se ejecuta cada que hay cambios de estado
     console.log("En render...");
     return (
       <div>
+        <button onClick={this.prueba}>Prueba Axios</button>
         <h1>Home works!</h1>
         <h1>Hola {this.state.nombre} !</h1>
         {this.updatedComponent()}
